@@ -2,27 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Summary from './Summary';
 import PreviewText from './PreviewText';
-import Alert from './Alert';
-
 
 function TextForm(props){
     const [text, setText] = useState('');
 
-    const darkColor = 'rgb(20, 34, 78)';
-
-    let style;
-    if(props.mode === 'dark')
-    {
-        style = {
-            color: 'white',
-            backgroundColor: darkColor
-        }
-    }
-    else{
-        style = {
-            color: 'black',
-            backgroundColor: 'white'
-        }
+    let style = {
+        backgroundColor:"inherit"
     }
 
     const handleOnChange = (event)=>{
@@ -129,23 +114,22 @@ function TextForm(props){
     }
     return (
         <>
-        <Alert alert={props.alert}/>
-        <div className='container mt-3' style={style}>
+        <div className="container mt-0" style={style}>
         <h1>{props.heading}</h1>
         <form>
             <div className="form-group">
                 <textarea className="form-control my-2" style={style} placeholder='Enter text here' value={text} id="exmp_text" rows="3" onChange={handleOnChange}></textarea>
             </div>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleUppercase}>UPPERCASE</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleLowercase}>lowercase</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleTextcase}>Text Case</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleAlternatecase}>aLTERNATE cASE</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleSentencecase}>Sentence case</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleAlternateCapital}>AlTeRnAtE CaPiTaLiSaTiOn</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleTextcase}>Text Case</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleCopy}>Copy Text</button>
-            <button type="button" className="btn btn-primary mx-1 mb-2" onClick={handleClear}>Clear Text</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleUppercase}>UPPERCASE</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleLowercase}>lowercase</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleTextcase}>Text Case</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleAlternatecase}>aLTERNATE cASE</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleSentencecase}>Sentence case</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleAlternateCapital}>AlTeRnAtE CaPiTaLiSaTiOn</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleTextcase}>Text Case</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleCopy}>Copy Text</button>
+            <button type="button" disabled={text.length === 0} className="btn btn-primary mx-1 mb-2" onClick={handleClear}>Clear Text</button>
         </form>
         </div>
         <div className="container">
